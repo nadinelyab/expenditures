@@ -19,22 +19,24 @@
   </tr>
 
   <% @expenditures.each do |expenditure| %>
-    <tr>
-      <td>
-        <%= expenditure.purchase_date.to_date %>
-      </td>
-      <td>
-        <%= expenditure.name %>
-      </td>
-      <td>
-        R<%= expenditure.price %>
-      </td>
-      <td>
-        <%= expenditure.quantity %>
-      </td>
-      <td>
-        <%= link_to 'Expand', expenditure_path(expenditure) %>
-      </td>
+    <% if expenditure.user_id == current_user.id %>
+      <tr>
+        <td>
+          <%= expenditure.purchase_date.to_date %>
+        </td>
+        <td>
+          <%= expenditure.name %>
+        </td>
+        <td>
+          R<%= expenditure.price %>
+        </td>
+        <td>
+          <%= expenditure.quantity %>
+        </td>
+        <td>
+          <%= link_to 'Expand', expenditure_path(expenditure) %>
+        </td>
+      <% end %>
   <% end %>
 </table>
 
